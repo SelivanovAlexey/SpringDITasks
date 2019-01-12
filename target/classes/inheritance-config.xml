@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="filmTemplate" abstract="true">
+        <property name="title" value="Untitled"/>
+        <property name="genre" value="0"/>
+        <property name="duration" value="0"/>
+    </bean>
+
+    <bean id="ironMan" class="com.netcracker.beanClasses.Cinema" parent="filmTemplate">
+        <property name="title" value="Iron Man"/>
+        <property name="genre" ref="action"/>
+    </bean>
+
+    <bean id="action" class="com.netcracker.beanClasses.ActionGenre" scope="prototype"/>
+
+</beans>

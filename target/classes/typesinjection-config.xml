@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+
+    <bean id="action" class="com.netcracker.beanClasses.ActionGenre" scope="prototype"/>
+    <bean id="comedy" class="com.netcracker.beanClasses.ComedyGenre" scope="prototype"/>
+    <bean id="documentary" class="com.netcracker.beanClasses.DocumentaryGenre" scope="prototype"/>
+
+
+
+    <!--Beans for CI-->
+
+    <bean id="avengers" class="com.netcracker.beanClasses.Cinema" scope="prototype">
+        <constructor-arg index="0" value="Avengers"/>
+        <constructor-arg index="1" ref="action"/>
+        <constructor-arg index="2" value="173"/>
+    </bean>
+
+    <bean id="snatch" class="com.netcracker.beanClasses.Cinema" scope="prototype">
+        <constructor-arg index="0" value="Snatch"/>
+        <constructor-arg index="1" ref="comedy"/>
+        <constructor-arg index="2" value="106"/>
+    </bean>
+
+    <bean id="winterOnFire" class="com.netcracker.beanClasses.Cinema" scope="prototype">
+        <constructor-arg index="0" value="Winter On Fire"/>
+        <constructor-arg index="1" ref="documentary"/>
+        <constructor-arg index="2" value="102"/>
+
+    </bean>
+
+    <!---->
+
+
+    <!--Beans for SI-->
+
+    <bean id="inception" class="com.netcracker.beanClasses.Cinema" scope="prototype">
+        <property name="title" value="Inception"/>
+        <property name="genre" ref="action"/>
+        <property name="duration" value="148"/>
+
+    </bean>
+
+
+    <bean id="incredibles" class="com.netcracker.beanClasses.Cinema" scope="prototype">
+        <property name="title" value="Incredibles 2"/>
+        <property name="genre" ref="comedy"/>
+        <property name="duration" value="94"/>
+
+    </bean>
+
+
+    <bean id="cobainMontageOfHeck" class="com.netcracker.beanClasses.Cinema" scope="prototype">
+        <property name="title" value="Cobain: Montage Of Heck"/>
+        <property name="genre" ref="documentary"/>
+        <property name="duration" value="145"/>
+
+    </bean>
+
+
+    <!---->
+    <!--Collection beans for CI-->
+
+    <bean id="cinemaListCI" class="com.netcracker.beanClasses.CinemaList" scope="prototype" >
+        <constructor-arg>
+            <list>
+                <ref bean="avengers"/>
+                <ref bean="snatch"/>
+                <ref bean="winterOnFire"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+
+
+    <bean id="cinemaSetCI" class="com.netcracker.beanClasses.CinemaSet" scope="prototype">
+        <constructor-arg>
+            <set>
+                <ref bean="avengers"/>
+                <ref bean="snatch"/>
+                <ref bean="winterOnFire"/>
+            </set>
+        </constructor-arg>
+    </bean>
+
+
+    <bean id="cinemaMapCI" class="com.netcracker.beanClasses.CinemaMap" scope="prototype">
+        <constructor-arg>
+            <map>
+                <entry key="1" value-ref="avengers"/>
+                <entry key="2" value-ref="snatch"/>
+                <entry key="3" value-ref="winterOnFire"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+
+    <!---->
+
+
+    <!--Collection beans for SI-->
+
+    <bean id="cinemaListSI" class="com.netcracker.beanClasses.CinemaList" scope="prototype">
+        <property name="list">
+            <list>
+                <ref bean="inception"/>
+                <ref bean="incredibles"/>
+                <ref bean="avengers"/>
+                <ref bean="winterOnFire"/>
+            </list>
+        </property>
+    </bean>
+
+
+
+    <bean id="cinemaSetSI" class="com.netcracker.beanClasses.CinemaSet" scope="prototype">
+        <property name="set">
+            <set>
+                <ref bean="cobainMontageOfHeck"/>
+                <ref bean="incredibles"/>
+                <ref bean="avengers"/>
+                <ref bean="winterOnFire"/>
+            </set>
+        </property>
+    </bean>
+
+
+    <bean id="cinemaMapSI" class="com.netcracker.beanClasses.CinemaMap" scope="prototype">
+        <property name="map">
+            <map>
+                <entry key="1" value-ref="avengers"/>
+                <entry key="2" value-ref="winterOnFire"/>
+                <entry key="3" value-ref="snatch"/>
+                <entry key="4" value-ref="cobainMontageOfHeck"/>
+            </map>
+        </property>
+    </bean>
+
+
+    <!---->
+</beans>

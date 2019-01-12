@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="bookOwnerTom" class="com.netcracker.autowiring.no.BookOwner">
+        <property name="name" value="Tom"/>
+    </bean>
+
+    <bean id="book" class="com.netcracker.autowiring.no.Book" autowire="no">
+        <constructor-arg name="title" value="Idiot"/>
+        <constructor-arg name="bookOwner" ref="bookOwnerTom"/>
+    </bean>
+</beans>
